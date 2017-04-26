@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>TP09 | Guillermo Andrés Tolaba</title>
+    </h:head>
+    <p:layout fullPage="true">  
+                <p:layoutUnit position="north" size="275" resizable="false" closable="false" collapsible="false">
+                 <center><img src="head.jpg" alt="Proyecto Los Santos" style="width: 800px; "/></center>
+                </p:layoutUnit>
+        <p:layoutUnit position="west" size="200" header="Menú" collapsible="true">
+                     <p:menu>
+                        <p:submenu label="Trabajo Práctico 9">
+                            <p:submenu label="Números"/>
+                            <p:menuitem value="Ver libros" url="/faces/libros.xhtml" />
+                            <p:menuitem value="Agregar libros" url="/faces/addlibros.xhtml" />
+                            <p:menuitem value="Rectángulos" url="/faces/rectangulos.xhtml" />
+                            <p:menuitem value="Autos" url="/faces/ahorcadito.xhtml" />
+
+                        </p:submenu>
+                    </p:menu>               
+            
+        </p:layoutUnit>
+    </p:layout>     
+    <p:layoutUnit position="center"> 
+                <center><p:panel id="pnlInicio" header="Promedios" style="width: 600px;" footer="TPRect">
+            <h:form id="frmLogin">
+                <h:panelGrid id="tblLogin" columns="3">
+                    <p:outputLabel id="lblNUsuario" value ="Ingrese un número:"/>
+                    <p:inputText id="inputX" value ="#{managedBeanP01.n}" required="true"/>
+                    <p:commandButton id="InicioSesion" value = "Calcular" action="#{managedBeanP01.agregarNumero()}" update="inputX outputZ outputRes outputRes1 outputRes2"/>        
+                    <p:outputLabel id="outputY" value ="Números"/>                   
+                    <p:outputLabel id="outputZ" value ="#{managedBeanP01.mostrarNumeros()}"/>
+                    <p:outputLabel id="outputZA" value =""/>
+                    <p:outputLabel id="outputRes" value ="#{managedBeanP01.obtenerRes(0)}"/>                       
+                    <p:outputLabel id="outputRes1" value ="#{managedBeanP01.obtenerRes(1)}"/>                       
+                    <p:outputLabel id="outputRes2" value ="#{managedBeanP01.obtenerRes(2)}"/>  
+                </h:panelGrid> 
+                
+            </h:form>       
+        </p:panel></center>
+        </p:layoutUnit>  
+        <br />
+    
+    
+</html>
+
