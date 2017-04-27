@@ -9,73 +9,99 @@
         <link href="index.css" rel="stylesheet"/>
     </h:head>
     <p:layout fullPage="true">  
-                <p:layoutUnit position="north" size="275" resizable="false" closable="false" collapsible="false">
-                 <center><img src="../head.jpg" alt="Proyecto Los Santos" style="width: 800px; "/></center>
-                </p:layoutUnit>
+        <p:layoutUnit position="north" size="275" resizable="false" closable="false" collapsible="false">
+            <center><img src="../head.jpg" alt="Proyecto Los Santos" style="width: 800px; "/></center>
+        </p:layoutUnit>
         <p:layoutUnit position="west" size="200" header="Menú" collapsible="true">
-                     <p:menu>
-                        <p:submenu label="Trabajo Práctico 9">
-                            <p:menuitem value="Números" url="../" />
-                            <p:menuitem value="Ver libros" url="/faces/libros.xhtml" />             
-                            <p:menuitem value="Agregar libro" url="/faces/addlibros.xhtml" />
-                            <p:menuitem value="Rectángulos" url="/faces/rectangulos.xhtml" />
-                            <p:submenu label="Autos"/>
-                        </p:submenu>
-                    </p:menu>           
-            
+            <p:menu>
+                <p:submenu label="Trabajo Práctico 9">
+                    <p:menuitem value="Números" url="../" />
+                    <p:menuitem value="Ver libros" url="/faces/libros.xhtml" />             
+                    <p:menuitem value="Agregar libro" url="/faces/addlibros.xhtml" />
+                    <p:menuitem value="Rectángulos" url="/faces/rectangulos.xhtml" />
+                    <p:submenu label="Autos"/>
+                </p:submenu>
+            </p:menu>           
+
         </p:layoutUnit>
     </p:layout>     
     <p:layoutUnit position="center"> 
         <center><p:panel id="pnlMuestra" header="Vehículos registrados" style="width: 600px;" footer="TPRect">
-            <h:form id="frmIngreso">
-                <h:dataTable id="tabData" value="#{autosMB.obtenerAutos()}" var="libre">
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="Matrícula"/>    
-                        </f:facet> 
-                        <h:outputText value="#{libre.matricula}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="Marca"/>    
-                        </f:facet> 
-                        <h:outputText value="#{libre.marca}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="Color"/>    
-                        </f:facet> 
-                        <h:outputText value="#{libre.color}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="Tipo combustible"/>    
-                        </f:facet> 
-                        <h:outputText value="#{libre.combustible}"/>
-                    </h:column>
-                    <h:column>
+                <h:form id="frmIngreso">
+                    <h:dataTable id="tabData" value="#{autosMB.obtenerAutos()}" var="libre">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Matrícula"/>    
+                            </f:facet> 
+                            <h:outputText value="#{libre.matricula}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Marca"/>    
+                            </f:facet> 
+                            <h:outputText value="#{libre.marca}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Modelo"/>    
+                            </f:facet> 
+                            <h:outputText value="#{libre.modelo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Color"/>    
+                            </f:facet> 
+                            <h:outputText value="#{libre.color}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Tipo combustible"/>    
+                            </f:facet> 
+                            <h:outputText value="#{libre.combustible}"/>
+                        </h:column>
+                        <h:column>
 
-    			<f:facet name="header">Acciones</f:facet>
-                        <p:commandButton value = "Borrar" actionListener="#{autosMB.removerAuto(libre)}" oncomplete="redir();"/>       
+                            <f:facet name="header">Acciones</f:facet>
+                            <p:commandButton value = "Borrar" actionListener="#{autosMB.removerAuto(libre)}" update=":frmIngreso"/>          
+                        </h:column>
+                        <h:column>
+                            <p:commandButton value = "Modificar" actionListener="#{autosMB.modificarAuto(libre)}" update=":frmLogin" oncomplete ="PF('editado').show()" />
+                        </h:column>
+                    </h:dataTable> 
+                </h:form>       
 
-                    </h:column>
-                </h:dataTable> 
-            </h:form>       
-            <script>
-                function redir() {
-                    window.location = 'auto.xhtml';
-                }
-            </script>
-                      
-        </p:panel></center>   
-         
-        
-        
-         
-        
-        </p:layoutUnit>  
-        <br />
-    
-    
+                <script>
+                    function redir() {
+                        window.location = 'auto.xhtml';
+                    }
+                </script>
+
+
+            </p:panel></center>   
+
+    </p:layoutUnit>  
+                    <p:dialog id="dialog" header="Modificar coche" widgetVar="editado">
+                    <h:form id="frmLogin">
+                        <h:panelGrid id="tblLogin" columns="2">
+                            <p:outputLabel value ="Matrícula"/>
+                            <p:inputText id="inputA" value ="#{autosMB.nuevamatricula}" required="true"/>
+                            <p:outputLabel value ="Marca"/>
+                            <p:inputText id="inputB" value ="#{autosMB.nuevamarca}" required="true"/>
+                            <p:outputLabel value ="Modelo"/>
+                            <p:inputText id="inputC" value ="#{autosMB.nuevomodelo}" required="true"/>
+                            <p:outputLabel value ="Color"/>
+                            <p:inputText id="inputD" value ="#{autosMB.nuevocolor}" required="true"/>
+                            <p:outputLabel value ="Tipo combustible"/>
+                            <p:inputText id="inputE" value ="#{autosMB.nuevocombustible}" required="true"/>
+
+                            <p:commandButton id="InicioSesion" value = "Modificar" actionListener="#{autosMB.modificacionCoche()}" update = ":frmIngreso"/>
+                        </h:panelGrid> 
+
+                    </h:form>       
+                </p:dialog> 
+
+    <br />
+
+
 </html>
 

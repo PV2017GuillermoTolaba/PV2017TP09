@@ -5,21 +5,23 @@ public class Auto implements Serializable{
     private String Marca = "";
     private String Color = "";
     private String Combustible = "";
-
+    private String Modelo = "";
     public Auto() {
     }
 
-    public Auto(String Mat, String Mar, String Col, String Comb)
+    public Auto(String Mat, String Mar, String Col, String Comb, String Model)
     {
         Matricula = Mat;
         Marca = Mar;
         Color = Col;
         Combustible = Comb;
+        Modelo = Model;
     }
     public void removerCoche()
     {
         Matricula = "";
         Marca = "";
+        Modelo = "";
         Color = "";
         Combustible = "";
     }
@@ -53,6 +55,14 @@ public class Auto implements Serializable{
 
     public void setCombustible(String Combustible) {
         this.Combustible = Combustible;
+    }
+
+    public String getModelo() {
+        return Modelo;
+    }
+
+    public void setModelo(String Modelo) {
+        this.Modelo = Modelo;
     }
     
     
