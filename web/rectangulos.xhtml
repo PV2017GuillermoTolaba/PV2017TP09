@@ -19,7 +19,7 @@
                             <p:menuitem value="Ver libros" url="/faces/libros.xhtml" />
                             <p:menuitem value="Agregar libro" url="/faces/addlibros.xhtml" />
                             <p:submenu label="Rectangulos"/>
-                            <p:menuitem value="Autos" url="/faces/ahorcadito.xhtml" />
+                            <p:menuitem value="Autos" url="/faces/auto.xhtml" />
 
                         </p:submenu>
                     </p:menu>           
@@ -62,7 +62,7 @@
                     </h:column>
                     <h:column>
 
-    			<f:facet name="header">Action</f:facet>
+    			<f:facet name="header">Botón</f:facet>
                         <p:commandButton value = "Borrar" actionListener="#{managedBeanP03.borrarRectangulo(libre)}" oncomplete="redir();"/>       
 
                     </h:column>

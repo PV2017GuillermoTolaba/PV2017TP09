@@ -16,11 +16,10 @@
                      <p:menu>
                         <p:submenu label="Trabajo Práctico 9">
                             <p:menuitem value="Números" url="../" />
-                            <p:submenu label="Ver libros"/>
+                            <p:menuitem value="Ver libros" url="/faces/libros.xhtml" />             
                             <p:menuitem value="Agregar libro" url="/faces/addlibros.xhtml" />
                             <p:menuitem value="Rectángulos" url="/faces/rectangulos.xhtml" />
-                            <p:menuitem value="Autos" url="/faces/auto.xhtml" />
-
+                            <p:submenu label="Autos"/>
                         </p:submenu>
                     </p:menu>           
             
@@ -29,35 +28,45 @@
     <p:layoutUnit position="center"> 
         <center><p:panel id="pnlMuestra" header="Libros registrados" style="width: 600px;" footer="TPRect">
             <h:form id="frmIngreso">
-                <h:dataTable id="tabData" value="#{libreria.libros}" var="libre">
+                <h:dataTable id="tabData" value="#{autosMB.autos}" var="libre">
                     <h:column>
                         <f:facet name="header">
-                            <h:outputText value="ISBN"/>    
+                            <h:outputText value="Matrícula"/>    
                         </f:facet> 
-                        <h:outputText value="#{libre.ISBN}"/>
+                        <h:outputText value="#{libre.matricula}"/>
                     </h:column>
                     <h:column>
                         <f:facet name="header">
-                            <h:outputText value="Autor"/>    
+                            <h:outputText value="Marca"/>    
                         </f:facet> 
-                        <h:outputText value="#{libre.autor}"/>
+                        <h:outputText value="#{libre.marca}"/>
                     </h:column>
                     <h:column>
                         <f:facet name="header">
-                            <h:outputText value="Título"/>    
+                            <h:outputText value="Color"/>    
                         </f:facet> 
-                        <h:outputText value="#{libre.titulo}"/>
+                        <h:outputText value="#{libre.color}"/>
                     </h:column>
                     <h:column>
                         <f:facet name="header">
-                            <h:outputText value="Precio"/>    
+                            <h:outputText value="Tipo combustible"/>    
                         </f:facet> 
-                        <h:outputText value="$#{libre.precio}"/>
+                        <h:outputText value="#{libre.combustible}"/>
                     </h:column>
+                    <h:column>
 
+    			<f:facet name="header">Botón</f:facet>
+                        <p:commandButton value = "Borrar" actionListener="#{autosMB.removerAuto(libre)}" oncomplete="redir();"/>       
+
+                    </h:column>
                 </h:dataTable> 
             </h:form>       
-                  
+            <script>
+                function redir() {
+                    window.location = 'auto.xhtml';
+                }
+            </script>
+                      
         </p:panel></center>   
          
         
