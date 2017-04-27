@@ -35,10 +35,18 @@ public class AutosMB {
         Autos[i].removerCoche();
         for(i=i; i<= ocupado; i++) Autos[i] = Autos[i+1];
     }
+    public Auto[] obtenerAutos(){
+        Auto[] AutoCargado = new Auto[ocupado+1];
+        for(int i = 0; i <= ocupado; i++)
+        {
+            AutoCargado[i] = Autos[i];
+        }
+        return AutoCargado;
+    }
     public Auto[] getAutos() {
         return Autos;
     }
-
+    
     public void setAutos(Auto[] Autos) {
         this.Autos = Autos;
     }

@@ -26,9 +26,9 @@
         </p:layoutUnit>
     </p:layout>     
     <p:layoutUnit position="center"> 
-        <center><p:panel id="pnlMuestra" header="Libros registrados" style="width: 600px;" footer="TPRect">
+        <center><p:panel id="pnlMuestra" header="Vehículos registrados" style="width: 600px;" footer="TPRect">
             <h:form id="frmIngreso">
-                <h:dataTable id="tabData" value="#{autosMB.autos}" var="libre">
+                <h:dataTable id="tabData" value="#{autosMB.obtenerAutos()}" var="libre">
                     <h:column>
                         <f:facet name="header">
                             <h:outputText value="Matrícula"/>    
@@ -55,7 +55,7 @@
                     </h:column>
                     <h:column>
 
-    			<f:facet name="header">Botón</f:facet>
+    			<f:facet name="header">Acciones</f:facet>
                         <p:commandButton value = "Borrar" actionListener="#{autosMB.removerAuto(libre)}" oncomplete="redir();"/>       
 
                     </h:column>
